@@ -1189,6 +1189,7 @@ func LoadConfig(filename string) (config *Config, err error) {
 
 	if config.AllowEnvironmentOverrides {
 		for _, envPair := range os.Environ() {
+			log.Printf("environment variable: %s", envPair)
 			applied, name, envErr := mungeFromEnvironment(config, envPair)
 			if envErr != nil {
 				if envErr.fatalErr != nil {
